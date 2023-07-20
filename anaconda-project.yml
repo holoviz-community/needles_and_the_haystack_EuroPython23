@@ -1,0 +1,51 @@
+# To reproduce: install 'anaconda-project', then 'anaconda-project run'
+name: needles and the haystack
+description: EuroPython 2023 talk
+maintainers:
+- jlstevens
+labels:
+- datashader
+- holoviews
+
+user_fields: [labels, skip, maintainers, user_fields]
+
+packages: &pkgs
+- bokeh
+- colorcet
+- dask
+- conda-forge::datashader=0.15.1
+- holoviews
+- notebook
+- numba
+- numexpr
+- pandas
+- panel >=1
+- numpy
+- python ==3.8
+- spatialpandas
+- xarray
+- pip
+- pyarrow
+- jupyter_client<8
+- hvplot <= 0.8.3
+- pip:
+  - git+https://github.com/holoviz/holoviews.git@d0d373134e42afd945f96443cbc30107fc1abfb2#egg=holoviews
+
+dependencies: *pkgs
+
+commands:
+  notebook:
+    unix: jupyter notebook needles_and_the_haystack.ipynb
+
+variables: {}
+downloads:
+  DATAFILE:
+    url: https://datashader-data.s3.amazonaws.com/gulls.parq
+    filename: data/gulls.parq
+
+env_specs:
+  default: {}
+
+platforms:
+- linux-64
+- osx-64

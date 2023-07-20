@@ -1,0 +1,1 @@
+This directory should contain gull.parq after running anaconda-project.
